@@ -48,10 +48,11 @@
 						// and this.settings
 						// you can add more functions like the one below and
 						// call them like so: this.yourOtherFunction(this.element, this.settings).
-						var $node 	  = $(this.element),
-								$settings = this.settings,
-								$tubeeHolder = jQuery('<div/>', {id: 'tubee_holder'}),
-								$tubeeOverlay = jQuery('<div/>', {id: 'tubee_overlay'});
+						var $node = $(this.element),
+							$settings = this.settings,
+							$tubeeHolder = jQuery('<div/>', {id: 'tubee_holder'}),
+							$tubeeWrapper = jQuery('<div/>', {id: 'tubee_wrapper'}),
+							$tubeeOverlay = jQuery('<div/>', {id: 'tubee_overlay'});
 
 						if ($settings.display == "fit") {
 							$settings.width = $node.width();
@@ -75,6 +76,15 @@
 							"z-index" : "1000"
 						});
 
+						$tubeeWrapper.css({
+							"position"	: "absolute",
+							"top"		: "0",
+							"left"		: "0",
+							"width"		: "100%",
+							"height"	: "100%",
+							"overflow"	: "hidden"
+						});
+
 						$tubeeHolder.css({
 							"position" 	: "absolute",
 							"top"		: $settings.top,
@@ -93,10 +103,11 @@
 								"opacity"	: ".8",
 								"z-index"	: "1"
 							});
-							$node.append($tubeeOverlay);
+							$tubeeWrapper.append($tubeeOverlay);
 						}
 
-						$node.append($tubeeHolder);
+						$tubeeWrapper.append($tubeeHolder);
+						$node.append($tubeeWrapper);
 
 						this.initYouTubeIframeAPI($node, $settings);
 				},
@@ -124,14 +135,14 @@
 					// The video player is ready
 					Plugin.onPlayerReady = function(e) {
 				        //this.resize();
-				        console.log("onPlayerReady");
+				        //console.log("onPlayerReady");
 				        if ($settings.mute) e.target.mute();
 				        e.target.seekTo($settings.startAt);
 				        e.target.playVideo();
 					};
 					// The video player's state changes
 					Plugin.onPlayerStateChange = function(state) {
-					    console.log("onPlayerStateChange");
+					    //console.log("onPlayerStateChange");
 				        if (state.data === 0 && $settings.repeat) { // video ended and repeat option is set true
 				            this.player.seekTo($settings.start); // restart
 				        }
