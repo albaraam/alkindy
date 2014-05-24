@@ -72,12 +72,14 @@ body
 }
 
 .navbar-default .navbar-nav>li>a {
-	color: #cddb2c;
+	/*color: #cddb2c;*/
+	color: #fff;
 }
 
 .navbar-default .navbar-nav>li>a:hover,
 .navbar-default .navbar-nav>li>a:focus {
-	color: #cddb2c;
+	/*color: #cddb2c;*/
+	color: #fff;
 	background-color: transparent;
 }
 
