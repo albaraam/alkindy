@@ -15,6 +15,29 @@
     <!-- custom CSS -->
     <link href="css/alkindy.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- for Google -->
+    <meta name="description" content="Alkindy from Tripoli, Lebanon">
+    <meta name="keywords" content="Alkindy, Alkindy from Tripoli Lebanon, Tripoli, Beirut, Lebanon ">
+
+    <meta name="author" content="Albaraa Mishlawi" />
+    <meta name="copyright" content="Albaraa Mishlawi" />
+    <meta name="application-name" content="Alkindy from Tripoli, Lebanon" />
+
+    <!-- for Facebook -->          
+    <meta property="og:url" content="http://albaraamishlawi.github.io/alkindy/" />
+    <meta property="og:title" content="Albaraa Mishlawi | CV"/>
+    <meta property="og:description" content="Alkindy from Tripoli, Lebanon" />
+    <meta property="og:type" content="article"/>
+    <meta property="og:image" content="http://albaraamishlawi.github.io/alkindy/images/alkindy_fb_link.jpg"/>
+    <meta property="og:image:width" content="640">
+    <meta property="og:image:height" content="360">
+    
+    <!-- for Twitter -->          
+    <meta name="twitter:card" content="Alkindy from Tripoli, Lebanon" />
+    <meta name="twitter:title" content="Alkindy from Tripoli, Lebanon" />
+    <meta name="twitter:description" content="Alkindy from Tripoli, Lebanon" />
+    <meta name="twitter:image" content="http://albaraamishlawi.github.io/alkindy/images/alkindy_fb_link.jpg" />
 </head>
 
 <body>
@@ -129,8 +152,26 @@
     <script>
 
     $(document).ready(function () {
+        //
+        window.mobilecheck = function () { 
+         if( navigator.userAgent.match(/Android/i)
+         || navigator.userAgent.match(/webOS/i)
+         || navigator.userAgent.match(/iPhone/i)
+         || navigator.userAgent.match(/iPad/i)
+         || navigator.userAgent.match(/iPod/i)
+         || navigator.userAgent.match(/BlackBerry/i)
+         || navigator.userAgent.match(/Windows Phone/i)
+         ){
+            return true;
+          }
+         else {
+            return false;
+          }
+        }
         var share = new Share(".share-button");
-        $("#campaign").tubee({videoId: "zyx3TnDBivw", bgColor: "#eee", display: "cover", overlay: "#fff"});
+        if(!window.mobilecheck){
+            //$("#campaign").tubee({videoId: "zyx3TnDBivw", bgColor: "#eee", display: "cover", overlay: "#fff"});
+        }
         $('.countdown').countdown({
             date: "June 17, 2014 12:00:00",
             render: function(data) {
